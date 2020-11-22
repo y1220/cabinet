@@ -29,10 +29,17 @@ class DocsController < ApplicationController
     def edit
     end
 
-    def uodate #doesn't have view page
+    def update #doesn't have view page
+        if @doc.update(doc_params)
+            redirect_to @doc
+        else
+            render "edit"
+        end
     end
 
     def destroy
+        @doc.destroy
+        redirect_to docs_path
     end
 
     private 
