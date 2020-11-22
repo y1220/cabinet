@@ -12,11 +12,11 @@ class DocsController < ApplicationController
     end
 
     def new
-        @doc = Doc.new
+        @doc = current_user.docs.build
     end
 
     def create #doesn't have view page
-        @doc = Doc.new(doc_params)
+        @doc = current_user.docs.build(doc_params)
 
         if @doc.save
             redirect_to @doc
